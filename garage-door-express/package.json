@@ -1,0 +1,22 @@
+{
+  "name": "garage-door-status",
+  "version": "1.0.0",
+  "description": "Just a simple api and website to show whether or not my garage door is open or not (since I always forget to close it lol)",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALearningCurve/garage-door-status.git"
+  },
+  "author": "ALearningCurve",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ALearningCurve/garage-door-status/issues"
+  },
+  "homepage": "https://github.com/ALearningCurve/garage-door-status#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

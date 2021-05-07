@@ -10,7 +10,7 @@ class DoorDetails extends React.Component {
     render() {
         return (
             <li key={this.props.id.toString()}>
-                {this.props.name} is {this.props.open ? "open" : "closed"}
+                {this.props.name} is {this.props.open ? "open ⚠️" : "closed 🔐"}
             </li>   
         );
     }

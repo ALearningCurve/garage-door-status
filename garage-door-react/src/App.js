@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
-import DoorList from './components/DoorList';
+import DoorsView from './components/DoorsView';
 function App() {
   return (
-    <DoorList />
+    <div id="main-container">
+      <DoorsView />
+    </div>
   );
 }
 

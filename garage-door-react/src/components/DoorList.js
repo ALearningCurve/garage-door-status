@@ -1,38 +1,51 @@
 import React from 'react'
 import DoorDetails from "./DoorDetails";
+import firebase from '../firebase.js'; 
 
 class DoorList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { doors:null}
-        this.getDoors();
+        this.state = { }
+    }
+
+    componentDidMount() {
+        this.getDoors()
     }
 
     getDoors = () => {
-        var response = [
-            {
-                id:0,
-                name:"Left Door",
-                open:true
-            },
-            {
-                id:1,
-                name:"Right Door",
-                open:false
-            }
-        ]
-        this.setState({
-            "doors":response
-        })
+        const db = firebase.firestore();
+        db.settings({
+            timestampsInSnapshots: true
+        });
+        const doorsRef = db.collection("doors")
+        doorsRef.onSnapshot('value', (querySnapshot) => {
+            const items = [];
+            querySnapshot.forEach((doc) => {
+                items.push({...doc.data(), id:doc.id})
+            })
+            this.setState({doors:items})
+        });
+        // var response = [
+        //     {
+        //         id:0,
+        //         name:"Left Door",
+        //         open:true
+        //     },
+        //     {
+        //         id:1,
+        //         name:"Right Door",
+        //         open:false
+        //     }
+        // ]
+        // this.setState({
+        //     "doors":response
+        // })
     }
 
     render() {
-        console.log(this.state)
-
         const doors = this.state.doors;
         return (
             <div>
-                <h1>Hello, world!</h1>
                 { doors == null ?
                     this.displayLoading() :
                     this.displayDoors()

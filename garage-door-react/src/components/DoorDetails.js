@@ -3,7 +3,6 @@ import React from 'react'
 class DoorDetails extends React.Component {
     constructor(props) {
         super(props);
-        console.table(props);
         this.state = { };
     }
 

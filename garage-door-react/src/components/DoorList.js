@@ -3,6 +3,8 @@ import DoorDetails from "./DoorDetails";
 import firebase from '../firebase.js'; 
 
 class DoorList extends React.Component {
+    unsubscribe;
+    
     constructor(props) {
         super(props);
         this.state = { }
@@ -12,37 +14,34 @@ class DoorList extends React.Component {
         this.getDoors()
     }
 
+    componentWillUnmount() {
+        this.unsubscribe && this.unsubscribe();
+    }
+
     getDoors = () => {
-        const db = firebase.firestore();
-        db.settings({
-            timestampsInSnapshots: true
-        });
-        const doorsRef = db.collection("doors")
-        doorsRef.onSnapshot('value', (querySnapshot) => {
+        
+        const doorsRef = this.props.db.collection("doors")
+        this.unsubscribe = doorsRef.onSnapshot('value', (querySnapshot) => {
             const items = [];
-            querySnapshot.forEach((doc) => {
+            this.snapshotSubscription = querySnapshot.forEach((doc) => {
                 items.push({...doc.data(), id:doc.id})
             })
-            this.setState({doors:items})
+            this.setState({doors:items}, ()=>{console.table(this.state.doors)})
+        }, error =>{
+            console.error(error)
+            this.setState({"error":error})
         });
-        // var response = [
-        //     {
-        //         id:0,
-        //         name:"Left Door",
-        //         open:true
-        //     },
-        //     {
-        //         id:1,
-        //         name:"Right Door",
-        //         open:false
-        //     }
-        // ]
-        // this.setState({
-        //     "doors":response
-        // })
     }
 
     render() {
+        const error = this.state.error
+        if (error) {
+            return (
+                <div>
+                    <h5>An error has occurred, the status of the doors could not be retrieved.</h5>
+                </div>
+            )
+        }
         const doors = this.state.doors;
         return (
             <div>

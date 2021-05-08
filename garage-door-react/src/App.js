@@ -43,11 +43,13 @@ export default class App extends Component {
     const db = this.db;
     const user = this.state.user;
     return (
-      <div id="main-container">
-        <LoginHandler auth={this.auth}/>
+      <div className="flex items-center justify-center h-screen">
+      <div>
         {user && 
           <DoorsView db={db} user={user}/>
         }
+        <LoginHandler auth={this.auth}/>
+      </div>
       </div>
     );
   }

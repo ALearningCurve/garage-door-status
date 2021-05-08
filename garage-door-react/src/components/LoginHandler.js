@@ -33,15 +33,17 @@ export default class LoginHandler extends Component {
         const isLoggedIn = !!this.state.user;
         const user = this.state.user
         return (
-            <div>
+            <div className="flex flex-col-reverse mt-20 items-center">
             { isLoggedIn 
                 ? 
                 <div>
-                    <h5> Welcome {user.displayName}!</h5>
-                    <button className="btn btn-danger" onClick={this.onSignOut}>Sign out</button>
+                    <span className="text-green-300"> Loggged in as <span className="font-bold">{user.displayName}</span>. </span>
+                    <button onClick={this.onSignOut}
+                    className="text-green-400 font-semibold underline mx-1"> Click to sign out </button>
                 </div>
                 : 
-                <button className="btn btn-primary" onClick={this.onSignIn}>Sign in with Google</button>
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+                onClick={this.onSignIn}>Sign in with Google</button>
             }
             </div>
         )

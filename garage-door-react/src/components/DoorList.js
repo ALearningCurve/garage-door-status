@@ -58,12 +58,16 @@ class DoorList extends React.Component {
         var doors = this.state.doors;
         return (
             <div>
-                <ul>
+                {/* <div className="grid grid-flow-col auto-cols-auto auto-rows-auto content-end"> */}
+                <div className="flex flex-wrap items-center justify-center">
+
                     {doors.map((door) => 
                         <DoorDetails {...door} key={door.id.toString()}/>
                     )}
-                </ul>
-                <sub className="DoorList-subtitle">Tracking {this.state.doors.length} doors</sub>
+                </div>
+                <div className="flex flex-col my-2 items-center">
+                    <sub className="DoorList-subtitle text-center dark:text-gray-400 text-gray-500">Tracking {this.state.doors.length} doors</sub>
+                </div>
             </div>
         )
     }

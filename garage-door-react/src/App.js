@@ -21,8 +21,8 @@ export default class App extends Component {
     
     this.auth = firebase.auth()
     
-    this.auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
-    this.db.useEmulator('localhost', 8080);
+    // this.auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
+    // this.db.useEmulator('localhost', 8080);
   }
   
   componentDidMount() {

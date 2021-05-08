@@ -3,6 +3,8 @@ import DoorsView from './components/DoorsView';
 import LoginHandler from "./components/LoginHandler";
 import firebase from './firebase.js'; 
 import React, { Component } from 'react'
+import { getToken, onMessageListener } from './firebase';
+import {Button, Row, Col, Toast} from 'react-bootstrap';
 
 export default class App extends Component {
   db; auth;
@@ -11,7 +13,7 @@ export default class App extends Component {
     super(props)
   
     this.state = {
-       user: null
+        user: null
     }
 
     this.db = firebase.firestore();
@@ -23,6 +25,7 @@ export default class App extends Component {
     
     // this.auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
     // this.db.useEmulator('localhost', 8080);
+    
   }
   
   componentDidMount() {

@@ -30,7 +30,7 @@ export default class LoginForm extends Component {
                             name="email" type="text"
                             value={this.state.email}
                             onChange={this.handleInputChange} 
-                            className="dark:bg-gray-600 rounded ml-5 m-1"
+                            className="dark:bg-gray-600 rounded ml-5 m-1 border-2 dark:border-0 px-2"
 
                             />
                     </label>
@@ -41,14 +41,14 @@ export default class LoginForm extends Component {
                             name="password" type="password"
                             value={this.state.password}
                             onChange={this.handleInputChange} 
-                            className="dark:bg-gray-600 rounded ml-5 m-1"
+                            className="dark:bg-gray-600 rounded ml-5 m-1 border-2 dark:border-0 px-2"
                             />
                     </label>
                     <br />
                 </form>
                 {/* show errors */}
                 {this.props.error && 
-                    <p className="dark:text-red-400 text-red text-center">
+                    <p className="dark:text-red-400 text-red-800 text-center">
                         There were errors in the form. <br/> {this.props.error.code}: {this.props.error.message}
                     </p>
                 }

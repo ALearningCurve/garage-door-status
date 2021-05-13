@@ -62,7 +62,7 @@ class DoorList extends React.Component {
                 <div className="flex flex-wrap items-center justify-center">
 
                     {doors.map((door) => 
-                        <DoorDetails {...door} key={door.id.toString()}/>
+                        <DoorDetails {...door} db={this.props.db} key={door.id.toString()}/>
                     )}
                 </div>
                 <div className="flex flex-col my-2 items-center">

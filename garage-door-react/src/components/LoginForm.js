@@ -48,7 +48,7 @@ export default class LoginForm extends Component {
                 </form>
                 {/* show errors */}
                 {this.props.error && 
-                    <p className="dark:text-red-400 text-red text-center">
+                    <p className="dark:text-red-400 text-red-800 text-center">
                         There were errors in the form. <br/> {this.props.error.code}: {this.props.error.message}
                     </p>
                 }

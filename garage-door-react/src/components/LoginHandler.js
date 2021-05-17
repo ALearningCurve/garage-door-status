@@ -30,8 +30,6 @@ export default class LoginHandler extends Component {
             alert("You must enter something before submitting")
             return;
         }
-        console.log(`password "${password}"::email "${email}"`)
-
         this.props.auth.signInWithEmailAndPassword(email.trim(), password.trim())
             .then((userCredential) => {
                 

@@ -1,4 +1,3 @@
-import { string } from 'prop-types';
 import React from 'react'
 import DoorStateToggle from "./DoorStateToggle";
 class DoorDetails extends React.Component {

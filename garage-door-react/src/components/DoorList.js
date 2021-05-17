@@ -1,6 +1,5 @@
 import React from 'react'
 import DoorDetails from "./DoorDetails";
-import firebase from '../firebase.js'; 
 
 class DoorList extends React.Component {
     unsubscribe;

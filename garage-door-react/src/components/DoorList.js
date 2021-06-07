@@ -1,6 +1,5 @@
 import React from 'react'
 import DoorDetails from "./DoorDetails";
-import firebase from '../firebase.js'; 
 
 class DoorList extends React.Component {
     unsubscribe;
@@ -19,7 +18,6 @@ class DoorList extends React.Component {
     }
 
     getDoors = () => {
-        console.log(this.props.user.uid)
         const doorsRef = this.props.db.collection("doors").where("uid", "==", this.props.user.uid);
 
         this.unsubscribe = doorsRef.onSnapshot('value', (querySnapshot) => {

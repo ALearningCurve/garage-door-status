@@ -13,31 +13,19 @@ export default class App extends Component {
     super(props)
   
     this.state = {
-        user: null,
-        show: false
+        user: null
     }
 
-    this.initFirebase();
-  }
-  
-  initFirebase = () => {
-    // Firestore
     this.db = firebase.firestore();
     this.db.settings({
         timestampsInSnapshots: true
     });
     
-    //  Auth
     this.auth = firebase.auth()
-
-    // Push notifcations
-    getToken()
-
-    onMessageListener().then(message => {
-      this.setState({
-        show:true
-      });
-    }).catch(err => console.log('failed: ', err));
+    
+    // this.auth.useEmulator('http://localhost:9099/', { disableWarnings: true });
+    // this.db.useEmulator('localhost', 8080);
+    
   }
   
   componentDidMount() {
@@ -48,31 +36,12 @@ export default class App extends Component {
     })
   }
 
-  renderToast() {
-    const show = this.state.show;
-    return (
-      <div>
-        <Toast onClose={() => this.setState({show:false})} show={show} delay={3000} autohide animation style={{
-          position: 'absolute',
-          top: 20,
-          right: 20,
-        }}>
-          <Toast.Header>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded mr-2"
-              alt=""
-            />
-            <strong className="mr-auto">Notification</strong>
-            <small>12 mins ago</small>
-          </Toast.Header>
-          <Toast.Body>There are some new updates that you might love!</Toast.Body>
-        </Toast>
-        <Button onClick={() => this.setState({show:true})}>Show Toast</Button>
-      </div>
-    )
+  changeAuthState = (user) => {
+    this.setState({
+      "user":user
+    })
   }
-
+  
   render() {
     const db = this.db;
     const user = this.state.user;
